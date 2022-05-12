@@ -5,7 +5,7 @@
 
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8aoIdKZxX5lSMNHCzY8Y8j0MJ21Qb9REHowMH0-cUdHkp0cXSKoUVe_jMTQD2DLBtCV0&usqp=CAU)
 
-## Cambios realizados a TicTacToe - José Manuel Medina
+## Cambios realizados a TicTacToe - José Manuel Medina Rodríguez A01706212
 - Se cambiaron los colores de la "X" y la "O", del fondo y de las líneas de la grilla del tablero.
 - Se ajustó el tamaño de la "X" y la "O" y se centraron ambos símbolos.
 - Se añadió el método "draw_symbol" para evitar repetición de código.
