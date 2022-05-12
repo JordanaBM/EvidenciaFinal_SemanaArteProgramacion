@@ -151,7 +151,8 @@ def move():
     for point, course in ghosts:
         if valid(point + course):
             # Movimiento de fantasmas
-            point.move(course)
+            # Hago que su velocidad sea el doble
+            point.move(course * 2)
             
         else:
             options = [
