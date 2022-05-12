@@ -10,10 +10,9 @@ from freegames import path
 """ Declara variables como la imagen que se usará:
 El contenido de los cuadros , estado y si estan o no ocultos."""
 car = path('car.gif')
-tiles = list(range(32)) * 2
+tiles = list(range(8)) * 2
 state = {'mark': None}
-hide = [True] * 64
-
+hide = [True] * 16
 # Definición de las funciones
 
 
@@ -25,19 +24,19 @@ def square(x, y):
     color('black', 'white')
     begin_fill()
     for count in range(4):
-        forward(50)
+        forward(100)
         left(90)
     end_fill()
 
 
 def index(x, y):
     """Convierte coordenadas (x,y) a index de piezas"""
-    return int((x + 200) // 50 + ((y + 200) // 50) * 8)
+    return int((x + 200) // 100 + ((y + 200) // 100) * 4)
 
 
 def xy(count):
     """Devuelve una pieza a coordenadas (x,y)."""
-    return (count % 8) * 50 - 200, (count // 8) * 50 - 200
+    return (count % 4) * 100 - 200, (count // 4) * 100 - 200
 
 
 def tap(x, y):
@@ -60,7 +59,7 @@ def draw():
     shape(car)
     stamp()
 
-    for count in range(64):
+    for count in range(16):
         if hide[count]:
             x, y = xy(count)
             square(x, y)
@@ -72,7 +71,7 @@ def draw():
         up()
         goto(x + 2, y)
         color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        write(tiles[mark], font=('Arial', 45, 'normal'))
 
     update()
     ontimer(draw, 100)
