@@ -23,16 +23,19 @@ writer = Turtle(visible=False)
 aim = vector(5, 0)
 # Posiciones iniciales de los personajes
 
-#Pacman aparece en el centro
+# Pacman aparece en el centro
 pacman = vector(-40, 0)
+
+# Agrego 5 fantasmas
 ghosts = [
     [vector(-180, 160), vector(5, 0)],
     [vector(-180, -160), vector(0, 5)],
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
+    [vector(100, -60), vector(-5, 0)],
 ]
 
-# fmt: off
+# fmt: apagado
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -55,7 +58,7 @@ tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
-# fmt: on
+# fmt: encendido
 
 
 # Forma del tablero
