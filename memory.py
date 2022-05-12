@@ -42,16 +42,17 @@ def xy(count):
 
 def tap(x, y):
     """Actualiza la marca u oculta piezas segun sean presionados."""
-    global taps
-    taps = taps + 1
-    spot = index(x, y)
-    mark = state['mark']
-    if mark is None or mark == spot or tiles[mark] != tiles[spot]:
-        state['mark'] = spot
-    else:
-        hide[spot] = False
-        hide[mark] = False
-        state['mark'] = None
+    if(x > -200 and x < 200 and y > -200 and y < 200):
+        global taps
+        taps = taps + 1
+        spot = index(x, y)
+        mark = state['mark']
+        if mark is None or mark == spot or tiles[mark] != tiles[spot]:
+            state['mark'] = spot
+        else:
+            hide[spot] = False
+            hide[mark] = False
+            state['mark'] = None
 
 
 def draw():
