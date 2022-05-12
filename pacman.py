@@ -102,7 +102,8 @@ def world():
 
     # Colores del path 
     bgcolor('black')
-    path.color('blue')
+    # Lo cambié a darkblue para que se parezca más al juego original
+    path.color('darkblue')
 
     for index in range(len(tiles)):
         tile = tiles[index]
@@ -116,7 +117,9 @@ def world():
                 path.up()
                 path.goto(x + 10, y + 10)
                 
-                path.dot(2, 'white')
+                #  Cambié el tamaño y color de los puntos que come pacman para
+                #  que sean más visibles
+                path.dot(4, 'pink')
 
 
 # Para el movimiento de pacman y los fantasmas
