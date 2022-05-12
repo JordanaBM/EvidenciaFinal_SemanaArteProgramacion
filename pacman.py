@@ -11,7 +11,10 @@ Ejercicios
 
 # Importo librerías necesarias
 from random import choice
-from turtle import *
+from turtle import Turtle, bgcolor, clear, up, goto, dot
+from turtle import update, ontimer, setup, hideturtle
+from turtle import tracer, listen, onkey, done
+
 
 from freegames import floor, vector
 
@@ -101,9 +104,9 @@ def valid(point):
 
 # Configuración del tablero
 def world():
-    #Dibujamos el mundo empleando el path
+    # Dibujamos el mundo empleando el path
 
-    # Colores del path 
+    # Colores del path
     bgcolor('black')
     # Lo cambié a darkblue para que se parezca más al juego original
     path.color('darkblue')
@@ -119,7 +122,7 @@ def world():
             if tile == 1:
                 path.up()
                 path.goto(x + 10, y + 10)
-                
+
                 #  Cambié el tamaño y color de los puntos que come pacman para
                 #  que sean más visibles
                 path.dot(4, 'pink')
@@ -134,7 +137,7 @@ def move():
     clear()
 
     if valid(pacman + aim):
-        #Movimiento de pacman
+        # Movimiento de pacman
         pacman.move(aim)
 
     index = offset(pacman)
@@ -156,7 +159,7 @@ def move():
             # Movimiento de fantasmas
             # Hago que su velocidad sea el doble
             point.move(course * 2)
-            
+
         else:
             options = [
                 vector(5, 0),
@@ -203,3 +206,4 @@ onkey(lambda: change(0, -5), 'Down')
 world()
 move()
 done()
+
