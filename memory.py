@@ -10,10 +10,16 @@ from freegames import path
 """ Declara variables como la imagen que se usará:
 El contenido de los cuadros , estado y si estan o no ocultos."""
 car = path('car.gif')
-tiles = list(range(8)) * 2
 state = {'mark': None}
-hide = [True] * 16
 taps = 0
+# Tamaño estandar para el puzzle=200
+puzzle_size = 200
+partition = 4
+partsqr = partition*partition
+tiles = list(range(partsqr//2)) * 2
+hide = [True] * partsqr
+sqr_size = puzzle_size*2//partition
+
 # Definición de las funciones
 
 
@@ -24,25 +30,28 @@ def square(x, y):
     down()
     color('black', 'white')
     begin_fill()
-    for count in range(4):
-        forward(100)
+    for count in range(partition):
+        forward(sqr_size)
         left(90)
     end_fill()
 
 
 def index(x, y):
     """Convierte coordenadas (x,y) a index de piezas"""
-    return int((x + 200) // 100 + ((y + 200) // 100) * 4)
+    return int((x + puzzle_size) // sqr_size +
+               ((y + puzzle_size) // sqr_size) * partition)
 
 
 def xy(count):
     """Devuelve una pieza a coordenadas (x,y)."""
-    return (count % 4) * 100 - 200, (count // 4) * 100 - 200
+    return ((count % partition) * sqr_size - puzzle_size,
+            (count // partition) * sqr_size - puzzle_size)
 
 
 def tap(x, y):
     """Actualiza la marca u oculta piezas segun sean presionados."""
-    if(x > -200 and x < 200 and y > -200 and y < 200):
+    if(x > -puzzle_size and x < puzzle_size
+       and y > -puzzle_size and y < puzzle_size):
         global taps
         taps = taps + 1
         spot = index(x, y)
@@ -62,7 +71,7 @@ def draw():
     shape(car)
     stamp()
 
-    for count in range(16):
+    for count in range(partsqr):
         if hide[count]:
             x, y = xy(count)
             square(x, y)
@@ -74,7 +83,8 @@ def draw():
         up()
         goto(x + 2, y)
         color('black')
-        write(tiles[mark], font=('Arial', 45, 'normal'))
+        write(tiles[mark], font=('Arial', int(
+            180*(puzzle_size/200)/partition), 'normal'))
     up()
     tapCounter()
     update()
@@ -84,14 +94,14 @@ def draw():
 def tapCounter():
     """Dibuja el contador de los taps"""
     global taps
-    goto(-200, -240)
+    goto(-puzzle_size, -puzzle_size*1.2)
     color('black')
     write("Número de taps: "+str(taps), font=('Arial', 18, 'normal'))
 
 
 # Flujo principal
 shuffle(tiles)
-setup(420, 600, 370, 0)
+setup(puzzle_size*2.2, puzzle_size*3, 370, 0)
 addshape(car)
 hideturtle()
 tracer(False)
