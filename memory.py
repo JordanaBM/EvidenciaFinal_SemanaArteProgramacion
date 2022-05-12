@@ -1,27 +1,19 @@
-"""Memory, puzzle game of number pairs.
+# Juego de memoria. Puzzle por pares de números
 
-Exercises:
-
-1. Count and print how many taps occur.
-2. Decrease the number of tiles to a 4x4 grid.
-3. Detect when all tiles are revealed.
-4. Center single-digit tile.
-5. Use letters instead of tiles.
-"""
-
+# Importar librerias
 from random import *
 from turtle import *
-
 from freegames import path
 
+# Declara variables como la imagen que se usará, el contenido de los cuadros , estado y si estan o no ocultos.
 car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
 
-
+# Definición de las funciones
 def square(x, y):
-    """Draw white square with black outline at (x, y)."""
+    """Dibuja cuadtros blancos con delinieado negro en (x, y)."""
     up()
     goto(x, y)
     down()
@@ -34,17 +26,17 @@ def square(x, y):
 
 
 def index(x, y):
-    """Convert (x, y) coordinates to tiles index."""
+    """Convierte coordenadas (x,y) a index de piezas"""
     return int((x + 200) // 50 + ((y + 200) // 50) * 8)
 
 
 def xy(count):
-    """Convert tiles count to (x, y) coordinates."""
+    """Devuelve una pieza a coordenadas (x,y)."""
     return (count % 8) * 50 - 200, (count // 8) * 50 - 200
 
 
 def tap(x, y):
-    """Update mark and hidden tiles based on tap."""
+    """Actualiza la marca u oculta piezas segun sean presionados."""
     spot = index(x, y)
     mark = state['mark']
 
@@ -57,7 +49,7 @@ def tap(x, y):
 
 
 def draw():
-    """Draw image and tiles."""
+    """Dibuja imagen y piezas"""
     clear()
     goto(0, 0)
     shape(car)
@@ -81,6 +73,7 @@ def draw():
     ontimer(draw, 100)
 
 
+# Flujo principal
 shuffle(tiles)
 setup(420, 420, 370, 0)
 addshape(car)
