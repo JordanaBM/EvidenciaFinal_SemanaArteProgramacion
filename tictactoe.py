@@ -1,11 +1,11 @@
 """Tic Tac Toe
 
-Exercises
+Ejercicios
 
-1. Give the X and O a different color and width.
-2. What happens when someone taps a taken spot?
-3. How would you detect when someone has won?
-4. How could you create a computer player?
+1. Dale a la X y a la O un color y ancho diferente.
+2. ¿Qué pasa cuando alguien presiona una posición ocupada?
+3. ¿Cómo detectarías cuando un jugador ha ganado?
+4. ¿Cómo crearías un jugador que sea una computadora?
 """
 
 import turtle
@@ -14,7 +14,7 @@ from freegames import line
 
 
 def grid():
-    """Draw tic-tac-toe grid."""
+    """Dibuja la grilla tic-tac-toe."""
     turtle.pencolor("blue")
     turtle.bgcolor("white")
     line(-67, 200, -67, -200)
@@ -24,14 +24,14 @@ def grid():
 
 
 def drawx(x, y):
-    """Draw X player."""
+    """Dibuja al jugador X."""
     turtle.pencolor("green")
     line(x+30, y+30, x + 100, y + 100)
     line(x+30, y + 100, x + 100, y+30)
 
 
 def drawo(x, y):
-    """Draw O player."""
+    """Dibuja al jugador O."""
     turtle.pencolor("red")
     turtle.up()
     turtle.goto(x + 64, y + 20)
@@ -40,18 +40,18 @@ def drawo(x, y):
 
 
 def floor(value):
-    """Round value down to grid with square size 133."""
+    """Redondea el valor al de la grilla."""
     return ((value + 200) // 133) * 133 - 200
 
 
 state = {'player': 0}
 players = [drawx, drawo]
-# Arreglo para verificar si un espacio ya esta ocupado
+# Arreglo para verificar si un espacio ya está ocupado
 places_on_grid = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 
 def draw_symbol(x, y, player):
-    """Draw either the x or the o accordingly"""
+    """Dibuja la X o la O correspondiente"""
     draw = players[player]
     draw(x, y)
     turtle.update()
@@ -60,7 +60,7 @@ def draw_symbol(x, y, player):
 
 
 def tap(x, y):
-    """Draw X or O in tapped square."""
+    """Dibuja la X o la O en el cuadrado seleccionado."""
     global places_on_grid
     x = floor(x)
     y = floor(y)
@@ -76,28 +76,28 @@ def tap(x, y):
             draw_symbol(x, y, player)
 
         elif places_on_grid[0] != "":
-            print("This space has already been used")
+            print("Este espacio ya está ocupado")
     elif square == 555:
         if places_on_grid[1] == " ":
             places_on_grid[1] = 1
             draw_symbol(x, y, player)
 
         else:
-            print("This space has already been used")
+            print("Este espacio ya está ocupado")
     elif square == 688:
         if places_on_grid[2] == " ":
             places_on_grid[2] = 1
             draw_symbol(x, y, player)
 
         else:
-            print("This space has already been used")
+            print("Este espacio ya está ocupado")
     elif square == 821:
         if places_on_grid[3] == " ":
             places_on_grid[3] = 821
             draw_symbol(x, y, player)
 
         else:
-            print("This space has already been used")
+            print("Este espacio ya está ocupado")
 
     elif square == 954:
         if places_on_grid[4] == " ":
@@ -105,7 +105,7 @@ def tap(x, y):
             draw_symbol(x, y, player)
 
         else:
-            print("This space has already been used")
+            print("Este espacio ya está ocupado")
 
     elif square == 1087:
         if places_on_grid[5] == " ":
@@ -113,7 +113,7 @@ def tap(x, y):
             draw_symbol(x, y, player)
 
         else:
-            print("This space has already been used")
+            print("Este espacio ya está ocupado")
 
     elif square == 1220:
         if places_on_grid[6] == " ":
@@ -121,7 +121,7 @@ def tap(x, y):
             draw_symbol(x, y, player)
 
         else:
-            print("This space has already been used")
+            print("Este espacio ya está ocupado")
 
     elif square == 1353:
         if places_on_grid[7] == " ":
@@ -129,7 +129,7 @@ def tap(x, y):
             draw_symbol(x, y, player)
 
         else:
-            print("This space has already been used")
+            print("Este espacio ya está ocupado")
 
     elif square == 1486:
         if places_on_grid[8] == " ":
@@ -137,7 +137,7 @@ def tap(x, y):
             draw_symbol(x, y, player)
 
         else:
-            print("This space has already been used")
+            print("Este espacio ya está ocupado")
 
 
 turtle.setup(420, 420, 370, 0)
