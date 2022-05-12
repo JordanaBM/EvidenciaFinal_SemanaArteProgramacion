@@ -3,9 +3,8 @@
 
 ###  Tecnológico de Monterrey Campus Querétaro
 
-<center>
+
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8aoIdKZxX5lSMNHCzY8Y8j0MJ21Qb9REHowMH0-cUdHkp0cXSKoUVe_jMTQD2DLBtCV0&usqp=CAU)
-</center>
 
 
 #### Cambios realizados a juego de Pacman  - Jordana Betancourt Menchaca A0107434
