@@ -1,30 +1,37 @@
-"""Pacman, classic arcade game.
+"""Pacman, juego acarde clásico
 
-Exercises
+Ejercicios
 
-1. Change the board.
-2. Change the number of ghosts.
-3. Change where pacman starts.
-4. Make the ghosts faster/slower.
-5. Make the ghosts smarter.
+1. Cambiar el tablero
+2. Hacer que los fantasmas vayan mas rápido
+3. Cambiar el número de fantasmas
+4. Cambiar la posición inicial de pacman
+
 """
 
+# Importo librerías necesarias
 from random import choice
 from turtle import *
 
 from freegames import floor, vector
 
+
+# La puntuación siempre inicia en 0
 state = {'score': 0}
 path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
-pacman = vector(-40, -80)
+# Posiciones iniciales de los personajes
+
+#Pacman aparece en el centro
+pacman = vector(-40, 0)
 ghosts = [
     [vector(-180, 160), vector(5, 0)],
     [vector(-180, -160), vector(0, 5)],
     [vector(100, 160), vector(0, -5)],
     [vector(100, -160), vector(-5, 0)],
 ]
+
 # fmt: off
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -51,8 +58,9 @@ tiles = [
 # fmt: on
 
 
+# Forma del tablero
 def square(x, y):
-    """Draw square using path at (x, y)."""
+    # Dibujar un cuadrado usando la ruta en (x, y)
     path.up()
     path.goto(x, y)
     path.down()
@@ -66,7 +74,7 @@ def square(x, y):
 
 
 def offset(point):
-    """Return offset of point in tiles."""
+    # Devolver desplazamiento de punto en mosaicos
     x = (floor(point.x, 20) + 200) / 20
     y = (180 - floor(point.y, 20)) / 20
     index = int(x + y * 20)
@@ -74,7 +82,7 @@ def offset(point):
 
 
 def valid(point):
-    """Return True if point is valid in tiles."""
+    # Devolvemos verdadero si el punto es válido en los mosaicos del juego
     index = offset(point)
 
     if tiles[index] == 0:
@@ -88,8 +96,11 @@ def valid(point):
     return point.x % 20 == 0 or point.y % 20 == 0
 
 
+# Configuración del tablero
 def world():
-    """Draw world using path."""
+    #Dibujamos el mundo empleando el path
+
+    # Colores del path 
     bgcolor('black')
     path.color('blue')
 
@@ -104,21 +115,25 @@ def world():
             if tile == 1:
                 path.up()
                 path.goto(x + 10, y + 10)
+                
                 path.dot(2, 'white')
 
 
+# Para el movimiento de pacman y los fantasmas
 def move():
-    """Move pacman and all ghosts."""
+
     writer.undo()
     writer.write(state['score'])
 
     clear()
 
     if valid(pacman + aim):
+        #Movimiento de pacman
         pacman.move(aim)
 
     index = offset(pacman)
 
+    # Para marcador de puntos
     if tiles[index] == 1:
         tiles[index] = 2
         state['score'] += 1
@@ -132,7 +147,9 @@ def move():
 
     for point, course in ghosts:
         if valid(point + course):
+            # Movimiento de fantasmas
             point.move(course)
+            
         else:
             options = [
                 vector(5, 0),
@@ -158,12 +175,13 @@ def move():
 
 
 def change(x, y):
-    """Change pacman aim if valid."""
+    # Cambiar dirección de pacman si es válido
     if valid(pacman + vector(x, y)):
         aim.x = x
         aim.y = y
 
 
+# Creación de instancia del videojuego
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
