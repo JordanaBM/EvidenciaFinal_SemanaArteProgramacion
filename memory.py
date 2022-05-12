@@ -1,17 +1,22 @@
 # Juego de memoria. Puzzle por pares de números
 
 # Importar librerias
-from random import *
-from turtle import *
+from random import shuffle
+from turtle import up, goto, down, color, begin_fill, forward, left, end_fill
+from turtle import clear, shape, stamp, write, update, ontimer, setup
+from turtle import addshape, hideturtle, tracer, onscreenclick, done
 from freegames import path
 
-# Declara variables como la imagen que se usará, el contenido de los cuadros , estado y si estan o no ocultos.
+""" Declara variables como la imagen que se usará:
+El contenido de los cuadros , estado y si estan o no ocultos."""
 car = path('car.gif')
 tiles = list(range(32)) * 2
 state = {'mark': None}
 hide = [True] * 64
 
 # Definición de las funciones
+
+
 def square(x, y):
     """Dibuja cuadtros blancos con delinieado negro en (x, y)."""
     up()
